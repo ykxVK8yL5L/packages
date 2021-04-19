@@ -39,7 +39,7 @@ jobs:
         chmod +x packages.sh
         git clone https://github.com/ykxVK8yL5L/packages.git
         cd packages
-        rm -rf !(.github|.gitignore|README.md|packages.sh)
+        rm -rf *
         git rm --cache *
         $GITHUB_WORKSPACE/packages.sh
 
@@ -47,6 +47,10 @@ jobs:
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        [ -e $GITHUB_WORKSPACE/.github ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
+        [ -e $GITHUB_WORKSPACE/.gitignore ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
+        [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
+        [ -e $GITHUB_WORKSPACE/packages.sh ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
         cd $GITHUB_WORKSPACE/packages
         git add .
         git commit -m "update$(TZ='Asia/Shanghai' date +@%Y%m%d)"
