@@ -47,7 +47,7 @@ jobs:
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        [ -e $GITHUB_WORKSPACE/.github ] && cp $GITHUB_WORKSPACE/.github $GITHUB_WORKSPACE/packages
+        [ -e $GITHUB_WORKSPACE/.github ] && cp -r $GITHUB_WORKSPACE/.github $GITHUB_WORKSPACE/packages
         [ -e $GITHUB_WORKSPACE/.gitignore ] && cp $GITHUB_WORKSPACE/.gitignore $GITHUB_WORKSPACE/packages
         [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/packages
         [ -e $GITHUB_WORKSPACE/packages.sh ] && cp $GITHUB_WORKSPACE/packages.sh $GITHUB_WORKSPACE/packages
