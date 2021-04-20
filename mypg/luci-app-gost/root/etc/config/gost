@@ -1,0 +1,7 @@
+
+config gost
+	option enable '0'
+	option run_command ''
+	option forward_server ''
+	list   forward_url  ''
+

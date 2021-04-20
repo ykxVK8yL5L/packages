@@ -1,0 +1,24 @@
+#!/bin/sh /etc/rc.common
+# Created By [CTCGFW]Project OpenWRT
+# https://github.com/project-openwrt
+
+START=90
+STOP=10
+
+enable="$(uci get gost.@gost[0].enable)"
+run_command="$(uci get gost.@gost[0].run_command)"
+forward_server="$(uci get gost.@gost[0].forward_server)"
+final_command=$run_command$forward_server
+
+start()
+{
+	stop
+
+	[ "${enable}" -ne "1" ] && exit 0
+	/usr/bin/gost ${final_command} &
+}
+
+stop()
+{
+	killall -9 "gost" > "/dev/null" 2>&1
+}
