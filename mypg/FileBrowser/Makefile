@@ -7,13 +7,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=filebrowser
-PKG_VERSION:=2.15.0
+PKG_VERSION:=2.16.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=be8683f
+PKG_SOURCE_VERSION:=8ecc2da
 PKG_SOURCE_URL:=https://github.com/filebrowser/filebrowser
-PKG_MIRROR_HASH:=dbf4ff9db137d1f596ad687edec097ae1bbf75ef04447256044e960e044e2ee5
+PKG_MIRROR_HASH:=21cfb55f8a9b6830164ab5c0825b05a1173b6813fd3224e85030a9555c60663b
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
@@ -69,7 +69,6 @@ endif
 define Build/Compile
 ( \
   cd $(PKG_BUILD_DIR) ; \
-  rm -rf frontend/dist ; \
   rm -f http/rice-box.go ; \
   cd $(PKG_BUILD_DIR)/frontend ; \
   npm ci; \
