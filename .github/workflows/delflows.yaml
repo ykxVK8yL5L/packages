@@ -11,4 +11,4 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          retain_days: 300
+          retain_days: 30
